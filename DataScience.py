@@ -4,8 +4,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
+import os
 
-file_path = "2025-VeloCityX-Expanded-Fan-Engagement-Data.csv"
+# Verify current working directory (Optional: Check where your script is running from)
+print("Current Working Directory:", os.getcwd())
+
+# Set file path (Update if necessary)
+file_path = r"2025-VeloCityX-Expanded-Fan-Engagement-Data.csv"
+
+# Load the dataset
 data = pd.read_csv(file_path)
 
 print("Dataset Preview:")
@@ -61,7 +68,7 @@ plt.xlabel('Cluster')
 plt.ylabel('Number of Users')
 plt.show()
 
-cluster_profile = data.groupby('Cluster').mean()
+cluster_profile = data.groupby('Cluster').mean(numeric_only=True)
 
 print("\nCluster Profiles:")
 print(cluster_profile)
